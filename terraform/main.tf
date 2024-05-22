@@ -58,7 +58,7 @@ resource "aws_rds_cluster" "cluster" {
   engine                  = "aurora-postgresql"
   engine_mode             = "provisioned"
   engine_version          = "15.4"
-  cluster_identifier      = var.aws_postresql_name
+  cluster_identifier      = var.aws_postgresql_name
   master_username         = var.aws_postgresql_administrator_name
   master_password         = var.aws_postgresql_administrator_password
   
@@ -69,7 +69,7 @@ resource "aws_rds_cluster" "cluster" {
 }
 
 resource "aws_rds_cluster_instance" "cluster_instances" {
-  identifier         = "${var.aws_postresql_name}-${count.index}"
+  identifier         = "${var.aws_postgresql_name}-${count.index}"
   count              = 1
   cluster_identifier = aws_rds_cluster.cluster.id
   instance_class     = "db.t3.medium"
@@ -145,7 +145,7 @@ variable "azs" {
 	default = ["us-east-1a", "us-east-1b"]
 }
 
-variable "aws_postresql_name" {
+variable "aws_postgresql_name" {
     type = string
 }
 
