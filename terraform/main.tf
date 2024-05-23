@@ -55,6 +55,7 @@ resource "aws_security_group" "security_group" {
 }
 
 resource "aws_rds_cluster" "cluster" {
+  vpc_security_group_ids = [aws_security_group.security_group.id]
   engine                  = "aurora-postgresql"
   engine_mode             = "provisioned"
   engine_version          = "15.4"
@@ -63,6 +64,7 @@ resource "aws_rds_cluster" "cluster" {
   master_password         = var.aws_postgresql_administrator_password
   
   db_subnet_group_name    = aws_db_subnet_group.rds_subnet_group.name
+  
   
   backup_retention_period = 7
   skip_final_snapshot     = true
