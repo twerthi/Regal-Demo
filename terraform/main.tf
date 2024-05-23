@@ -129,6 +129,15 @@ resource "aws_route_table_association" "a" {
   route_table_id = aws_route_table.solutions_rt.id
 }
 
+# ECS Cluster
+resource "aws_ecs_cluster" "example-cluster" {
+  name = "shawn-sesna-cluster"
+  tags = {
+    octopus_environment = var.octopus_environment
+    octopus_role = "regal-ecs"
+  }
+}
+
 variable "aws_region" {
 	default = "us-east-1"
 }
@@ -162,4 +171,8 @@ variable "aws_postgresql_administrator_password" {
 variable "octopus_cloud_static_cidr" {
     type = string
     default = "0.0.0.0/0"
+}
+
+variable "octopus_environment" {
+  type = string
 }
