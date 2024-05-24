@@ -63,4 +63,6 @@ jobs:
     - name: Create a release in Octopus Deploy 🐙
       uses: OctopusDeploy/create-release-action@v3
       with:
-        project: 'AWS Container Lambda'        
+        project: 'AWS Container Lambda'
+        packages: |
+          "AWS - Deploy Lambda Function image:${{ env.PACKAGE_VERSION }}"      
