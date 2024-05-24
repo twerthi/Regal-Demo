@@ -31,7 +31,7 @@ jobs:
         REPOSITORY: lambda-docker-hello-world
         IMAGE_TAG: ${{ env.PACKAGE_VERSION }}
       run: |
-        docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
+        docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG lambda/.
         docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
       
 
@@ -52,5 +52,5 @@ jobs:
         REPOSITORY: lambda-docker-hello-world
         IMAGE_TAG: ${{ env.PACKAGE_VERSION }}
       run: |
-        docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
+        docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG lambda/.
         docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
