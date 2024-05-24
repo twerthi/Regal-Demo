@@ -9,6 +9,11 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+        OCTOPUS_API_KEY: ${{ secrets.OCTOPUS_API_KEY  }}
+        OCTOPUS_URL: "https://demo.octopus.app"
+        OCTOPUS_SPACE: 'Shawn Sesna'
+
     steps:
     - uses: actions/checkout@v2
     - name: Set Version
@@ -54,3 +59,8 @@ jobs:
       run: |
         docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG lambda/.
         docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
+
+    - name: Create a release in Octopus Deploy 🐙
+      uses: OctopusDeploy/create-release-action@v3
+      with:
+        project: 'AWS Container Lambda'        
