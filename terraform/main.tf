@@ -153,7 +153,7 @@ variable "subnets_cidr" {
 
 variable "azs" {
 	type = list
-	default = ["${var.aws_region}-1a", "${var.aws_region}-1b"]
+	default = ["us-east-1a", "us-east-1b"]
 }
 
 variable "aws_postgresql_name" {
