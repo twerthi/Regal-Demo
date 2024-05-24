@@ -21,9 +21,19 @@ jobs:
         aws-access-key-id: ${{ secrets.TEST_AWS_ACCESS_KEY }}
         aws-secret-access-key: ${{ secrets.TEST_AWS_SECRET_KEY }}
 
-    - name: Login to Amazon ECR
+    - name: Login to Amazon Test ECR
       id: login-ecr-test
-      uses: aws-actions/amazon-ecr-login@v2   
+      uses: aws-actions/amazon-ecr-login@v2
+      
+    - name: Build, tag, and push docker image to Amazon ECR
+      env:
+        REGISTRY: ${{ steps.login-ecr-test.outputs.registry }}
+        REPOSITORY: lambda-docker-hello-world
+        IMAGE_TAG: ${{ env.PACKAGE_VERSION }}
+      run: |
+        docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
+        docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
+      
 
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v2
@@ -32,6 +42,15 @@ jobs:
         aws-access-key-id: ${{ secrets.PROD_AWS_ACCESS_KEY }}
         aws-secret-access-key: ${{ secrets.PROD_AWS_SECRET_KEY }}
 
-    - name: Login to Amazon ECR
+    - name: Login to Amazon Prod ECR
       id: login-ecr-prod
       uses: aws-actions/amazon-ecr-login@v2         
+
+    - name: Build, tag, and push docker image to Amazon ECR
+      env:
+        REGISTRY: ${{ steps.login-ecr-prod.outputs.registry }}
+        REPOSITORY: lambda-docker-hello-world
+        IMAGE_TAG: ${{ env.PACKAGE_VERSION }}
+      run: |
+        docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
+        docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
