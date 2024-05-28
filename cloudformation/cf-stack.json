@@ -49,14 +49,15 @@
                     "Fn::Select" : [ 
                       0, 
                       { 
-                        "Fn::GetAZs" : "" 
+                        "Fn::GetAZs" : "us-east-1" 
                       } 
                     ]
                   },
                 "Tags" : [
                     {"Key" : "Name", "Value" : "shawn-sesna-subnet"}
                 ]
-            }
+            },
+            "DependsOn" : "regalVPC"
         },
         "regalRTA" : {
             "Type" : "AWS::EC2::SubnetRouteTableAssociation",
