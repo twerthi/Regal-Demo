@@ -62,6 +62,7 @@
             "Type" : "AWS::EC2::SecurityGroup",
             "Properties" : {
                 "GroupName" : "shawn-sesna-security-group",
+                "GroupDescription" : "Regal demo security group",
                 "SecurityGroupEgress" : [
                     {
                         "IPProtocol" : "tcp",
