@@ -45,7 +45,7 @@
             "Properties" : {
                 "VpcId" : {"Ref" : "regalVPC"},
                 "CidrBlock" : "10.0.0.0/24",
-                "AvailabilityZone" : "us-east-1a",
+                "AvailabilityZone" : ["us-east-1a", "us-east-1b"],
                 "Tags" : [
                     {"Key" : "Name", "Value" : "shawn-sesna-subnet"}
                 ]
