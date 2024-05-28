@@ -7,8 +7,23 @@
                 "EnableDnsSupport" : "true",
                 "EnableDnsHostnames" : "true",
                 "Tags" : [ 
-                    {"Key" : "name", "Value" : "shawn-sesna-vpc"} 
+                    {"Key" : "Name", "Value" : "shawn-sesna-vpc"} 
                 ]
+            }
+        },
+        "regalIGW" : {
+            "Type" : "AWS::EC2::InternetGateway",
+            "Properties" : {
+                "Tags" : [
+                    {"Key" : "Name", "Value" : "shawn-sesna-igw"}
+                ]
+            }
+        },
+        "regalIGW-VPC" : {
+            "Type" : "AWS::EC2::VPCGatewayAttachment",
+            "Properties" : {
+                "InternetGatewayId" : { "Ref" : "regalIGW"},
+                "VpcId" : { "Ref" : "regalVPC"}
             }
         }
     }
