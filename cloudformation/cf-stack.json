@@ -64,17 +64,28 @@
             },
             "DependsOn" : "regalVPC"
         },
-
-        "regalRTA" : {
+        "regalRTA1" : {
             "Type" : "AWS::EC2::SubnetRouteTableAssociation",
             "Properties" : {
-                "RouteTableId" : {"Ref" : "regalRT"}
+                "RouteTableId" : {"Ref" : "regalRT"},
+                "SubnetId" : {"Ref" : "regalSubnet1"}
             },
             "DependsOn" : [
                 "regalSubnet1",
                 "regalSubnet2"
             ]
         },
+        "regalRTA2" : {
+            "Type" : "AWS::EC2::SubnetRouteTableAssociation",
+            "Properties" : {
+                "RouteTableId" : {"Ref" : "regalRT"},
+                "SubnetId" : {"Ref" : "regalSubnet2"}
+            },
+            "DependsOn" : [
+                "regalSubnet1",
+                "regalSubnet2"
+            ]
+        },        
         "regalSG" : {
             "Type" : "AWS::EC2::SecurityGroup",
             "Properties" : {
