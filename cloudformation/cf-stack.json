@@ -23,7 +23,30 @@
             "Type" : "AWS::EC2::VPCGatewayAttachment",
             "Properties" : {
                 "InternetGatewayId" : { "Ref" : "regalIGW"},
-                "VpcId" : { "Ref" : "regalVPC"}
+                "VpcId" : { "Ref" : "regalVPC"},
+                "Tags" : [
+                    {"Key" : "Name", "Value" : "shawn-sesna-IG-VPC"}
+                ]
+            }
+        },
+        "regalRT" : {
+            "Type" : "AWS::EC2::RouteTable",
+            "Properties" : {
+                "VpcId" : { "Ref" : "regalVPC"},
+                "Tags" : [
+                    {"Key" : "Name", "Value" : "shawn-sesna-RT"}
+                ]
+            }
+        },
+        "regalSubnet" : {
+            "Type" : "AWS::EC2::Subnet",
+            "Properties" : {
+                "VpcId" : {"Ref" : "regalVPC"},
+                "CidrBlock" : "10.0.0.0/24",
+                "AvailabilityZone" : "us-east-1a",
+                "Tags" : [
+                    {"Key" : "Name", "Value" : "shawn-sesna-subnet"}
+                ]
             }
         }
     }
