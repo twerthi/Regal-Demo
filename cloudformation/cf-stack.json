@@ -70,7 +70,10 @@
             "Properties" : {
                 "RouteTableId" : {"Ref" : "regalRT"}
             },
-            "DependsOn" : "regalSubnet"
+            "DependsOn" : [
+                "regalSubnet1",
+                "regalSubnet2"
+            ]
         },
         "regalSG" : {
             "Type" : "AWS::EC2::SecurityGroup",
@@ -109,7 +112,10 @@
                     {"Ref" : "regalSubnet2"}
                 ]
             },
-            "DependsOn" : "regalSubnet"
+            "DependsOn" : [
+                "regalSubnet1",
+                "regalSubnet2"
+            ]
         }
     }
  }
