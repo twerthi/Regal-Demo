@@ -135,7 +135,7 @@
                     {"Ref" : "regalSG"}
                 ],
                 "Engine" : "aurora-postgresql",
-                "EngineMode" : "provisionined",
+                "EngineMode" : "provisioned",
                 "EngineVersion" : "15.4",
                 "MasterUsername" : "ReplaceMe!",
                 "MasterUserPassword" : "ReplaceMe!",
