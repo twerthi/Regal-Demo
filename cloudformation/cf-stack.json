@@ -127,6 +127,33 @@
                 "regalSubnet1",
                 "regalSubnet2"
             ]
+        },
+        "regalPostgresCluster" : {
+            "Type" : "AWS::RDS::DBCluster",
+            "Properties" : {
+                "VpcSecurityGroupIds" : [
+                    {"Ref" : "regalSG"}
+                ],
+                "Engine" : "aurora-postgresql",
+                "EngineMode" : "provisionined",
+                "EngineVersion" : "15.4",
+                "MasterUsername" : "ReplaceMe!",
+                "MasterUserPassword" : "ReplaceMe!",
+                "DBClusterIdentifier" : "ReplaceMe!",
+                "DBSubnetGroupName" : {"Ref" : "regalDBSubnet"},
+                "BackupRetentionPeriod" : 7,
+                "DeletionProtection" : false
+            }
+        },
+        "regalPostgresInstance1" : {
+            "Type": "AWS::RDS::DBInstance",
+            "Properties" : {
+                "Engine" : "aurora-postgresql",
+                "DBClusterIdentifier" : {"Ref" : "regalPostgresCluster"},
+                "DBSubnetGroupName" : {"Ref" : "regalDBSubnet"},
+                "PubliclyAccessible" : true,
+                "DBInstanceClass" : "db.t3.medium"
+            }
         }
     }
  }
