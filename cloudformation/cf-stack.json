@@ -82,6 +82,7 @@
             "Type" : "AWS::RDS::DBSubnetGroup",
             "Properties" : {
                 "DBSubnetGroupName" : "shawn-sesna-db-subnetgroup",
+                "DBSubnetGroupDescription" : "Regal demo Aurora postres",
                 "SubnetIds" : [
                     {"Ref" : "regalSubnet"}
                 ]
