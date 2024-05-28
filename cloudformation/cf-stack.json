@@ -142,7 +142,8 @@
                 "DBClusterIdentifier" : "ReplaceMe!",
                 "DBSubnetGroupName" : {"Ref" : "regalDBSubnet"},
                 "BackupRetentionPeriod" : 7,
-                "DeletionProtection" : false
+                "DeletionProtection" : false,
+                "Port" : 5432
             }
         },
         "regalPostgresInstance1" : {
