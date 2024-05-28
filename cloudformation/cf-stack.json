@@ -19,7 +19,7 @@
                 ]
             }
         },
-        "regalIGW-VPC" : {
+        "regalIGWVPC" : {
             "Type" : "AWS::EC2::VPCGatewayAttachment",
             "Properties" : {
                 "InternetGatewayId" : { "Ref" : "regalIGW"},
