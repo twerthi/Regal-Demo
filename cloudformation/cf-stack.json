@@ -23,10 +23,7 @@
             "Type" : "AWS::EC2::VPCGatewayAttachment",
             "Properties" : {
                 "InternetGatewayId" : { "Ref" : "regalIGW"},
-                "VpcId" : { "Ref" : "regalVPC"},
-                "Tags" : [
-                    {"Key" : "Name", "Value" : "shawn-sesna-IG-VPC"}
-                ]
+                "VpcId" : { "Ref" : "regalVPC"}
             }
         },
         "regalRT" : {
