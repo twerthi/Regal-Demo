@@ -99,7 +99,7 @@
                         "CidrIp" : "0.0.0.0/0"
                     }
                 ],
-                "SecurityGroupIngrss" : [
+                "SecurityGroupIngress" : [
                     {
                         "IPProtocol" : "tcp",
                         "FromPort" : 5432,
