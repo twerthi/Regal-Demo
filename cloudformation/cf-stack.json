@@ -45,6 +45,46 @@
                     {"Key" : "Name", "Value" : "shawn-sesna-subnet"}
                 ]
             }
+        },
+        "regalRTA" : {
+            "Type" : "AWS::EC2::SubnetRouteTableAssociation",
+            "Properties" : {
+                "RouteTableId" : {"Ref" : "regalRT"}
+            }
+        },
+        "regalSG" : {
+            "Type" : "AWS::EC2::SecurityGroup",
+            "Properties" : {
+                "GroupName" : "shawn-sesna-security-group",
+                "SecurityGroupEgress" : [
+                    {
+                        "IPProtocol" : "tcp",
+                        "FromPort" : 0,
+                        "ToPort" : 0,
+                        "CidrIp" : "0.0.0.0/0"
+                    }
+                ],
+                "SecurityGroupIngrss" : [
+                    {
+                        "IPProtocol" : "tcp",
+                        "FromPort" : 5432,
+                        "ToPort" : 5432,
+                        "CidrIp" : "0.0.0.0/0"
+                    }
+                ],
+                "Tags" : [
+                    {"Key" : "Name", "Value" : "shawn-sesna-securitygroup"}
+                ]
+            }
+        },
+        "regalDBSubnet" : {
+            "Type" : "AWS::RDS::DBSubnetGroup",
+            "Properties" : {
+                "DBSubnetGroupName" : "shawn-sesna-db-subnetgroup",
+                "SubnetIds" : [
+                    {"Ref" : "regalSubnet"}
+                ]
+            }
         }
     }
  }
