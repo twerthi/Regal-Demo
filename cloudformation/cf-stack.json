@@ -40,25 +40,31 @@
             },
             "DependsOn" : "regalVPC"            
         },
-        "regalSubnet" : {
+        "regalSubnet1" : {
             "Type" : "AWS::EC2::Subnet",
             "Properties" : {
                 "VpcId" : {"Ref" : "regalVPC"},
-                "CidrBlock" : "10.0.0.0/24",
-                "AvailabilityZone" : {
-                    "Fn::Select" : [ 
-                      0, 
-                      { 
-                        "Fn::GetAZs" : "us-east-1" 
-                      } 
-                    ]
-                  },
+                "CidrBlock" : "10.0.1.0/24",
+                "AvailabilityZone" : "us-east-1a",
                 "Tags" : [
-                    {"Key" : "Name", "Value" : "shawn-sesna-subnet"}
+                    {"Key" : "Name", "Value" : "shawn-sesna-subnet1"}
                 ]
             },
             "DependsOn" : "regalVPC"
         },
+        "regalSubnet2" : {
+            "Type" : "AWS::EC2::Subnet",
+            "Properties" : {
+                "VpcId" : {"Ref" : "regalVPC"},
+                "CidrBlock" : "10.0.2.0/24",
+                "AvailabilityZone" : "us-east-1b",
+                "Tags" : [
+                    {"Key" : "Name", "Value" : "shawn-sesna-subnet2"}
+                ]
+            },
+            "DependsOn" : "regalVPC"
+        },
+
         "regalRTA" : {
             "Type" : "AWS::EC2::SubnetRouteTableAssociation",
             "Properties" : {
@@ -99,7 +105,8 @@
                 "DBSubnetGroupName" : "shawn-sesna-db-subnetgroup",
                 "DBSubnetGroupDescription" : "Regal demo Aurora postres",
                 "SubnetIds" : [
-                    {"Ref" : "regalSubnet"}
+                    {"Ref" : "regalSubnet1"},
+                    {"Ref" : "regalSubnet2"}
                 ]
             },
             "DependsOn" : "regalSubnet"
