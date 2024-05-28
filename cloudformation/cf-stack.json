@@ -50,7 +50,8 @@
             "Type" : "AWS::EC2::SubnetRouteTableAssociation",
             "Properties" : {
                 "RouteTableId" : {"Ref" : "regalRT"}
-            }
+            },
+            "DependsOn" : "regalSubnet"
         },
         "regalSG" : {
             "Type" : "AWS::EC2::SecurityGroup",
@@ -84,7 +85,8 @@
                 "SubnetIds" : [
                     {"Ref" : "regalSubnet"}
                 ]
-            }
+            },
+            "DependsOn" : "regalSubnet"
         }
     }
  }
