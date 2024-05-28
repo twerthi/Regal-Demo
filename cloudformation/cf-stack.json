@@ -80,7 +80,8 @@
                 ],
                 "Tags" : [
                     {"Key" : "Name", "Value" : "shawn-sesna-securitygroup"}
-                ]
+                ],
+                "VpcId" : { "Ref" : "regalVPC"}
             }
         },
         "regalDBSubnet" : {
