@@ -24,7 +24,11 @@
             "Properties" : {
                 "InternetGatewayId" : { "Ref" : "regalIGW"},
                 "VpcId" : { "Ref" : "regalVPC"}
-            }
+            },
+            "DependsOn" : [
+                "regalIGW",
+                "regalVPC"
+            ]
         },
         "regalRT" : {
             "Type" : "AWS::EC2::RouteTable",
@@ -33,7 +37,8 @@
                 "Tags" : [
                     {"Key" : "Name", "Value" : "shawn-sesna-RT"}
                 ]
-            }
+            },
+            "DependsOn" : "regalVPC"            
         },
         "regalSubnet" : {
             "Type" : "AWS::EC2::Subnet",
