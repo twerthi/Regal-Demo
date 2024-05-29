@@ -48,7 +48,8 @@
                 "AvailabilityZone" : "",
                 "Tags" : [
                     {"Key" : "Name", "Value" : "shawn-sesna-subnet1"}
-                ]
+                ],
+                "MapPublicIpOnLaunch" : true
             },
             "DependsOn" : "regalVPC"
         },
@@ -60,7 +61,8 @@
                 "AvailabilityZone" : "",
                 "Tags" : [
                     {"Key" : "Name", "Value" : "shawn-sesna-subnet2"}
-                ]
+                ],
+                "MapPublicIpOnLaunch" : true
             },
             "DependsOn" : "regalVPC"
         },
