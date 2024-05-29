@@ -3,7 +3,7 @@
         "regalVPC" : {
             "Type" : "AWS::EC2::VPC",
             "Properties" : {
-                "CidrBlock" : "10.0.0.0/16",
+                "CidrBlock" : "10.20.0.0/16",
                 "EnableDnsSupport" : "true",
                 "EnableDnsHostnames" : "true",
                 "Tags" : [ 
@@ -44,7 +44,7 @@
             "Type" : "AWS::EC2::Subnet",
             "Properties" : {
                 "VpcId" : {"Ref" : "regalVPC"},
-                "CidrBlock" : "10.0.1.0/24",
+                "CidrBlock" : "10.20.1.0/24",
                 "AvailabilityZone" : "",
                 "Tags" : [
                     {"Key" : "Name", "Value" : "shawn-sesna-subnet1"}
@@ -56,7 +56,7 @@
             "Type" : "AWS::EC2::Subnet",
             "Properties" : {
                 "VpcId" : {"Ref" : "regalVPC"},
-                "CidrBlock" : "10.0.2.0/24",
+                "CidrBlock" : "10.20.2.0/24",
                 "AvailabilityZone" : "",
                 "Tags" : [
                     {"Key" : "Name", "Value" : "shawn-sesna-subnet2"}
