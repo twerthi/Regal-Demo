@@ -46,7 +46,7 @@
             "Properties" : {
                 "RouteTableId" : {"Ref" : "regalRT"},
                 "DestinationCidrBlock" : "0.0.0.0/0",
-                "GatewayId" : {"RDS" : "regalIGW"}
+                "GatewayId" : {"Ref" : "regalIGW"}
             }
         },
         "regalSubnet1" : {
