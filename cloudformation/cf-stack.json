@@ -40,11 +40,13 @@
             },
             "DependsOn" : "regalVPC"            
         },
-        "regalIGRT" : {
-            "Type" : "AWS::EC2::GatewayRouteTableAssociation",
+        "regalRoute1" : {
+            "Type" : "AWS::EC2::Route",
+            "DependsOn" : "regalIGW",
             "Properties" : {
-                "GatewayId" : {"Ref" : "regalIGW"},
-                "RouteTableId" : {"Ref" : "regalRT"}
+                "RouteTableId" : {"Ref" : "regalRT"},
+                "DestinationCidrBlock" : "0.0.0.0/0",
+                "GatewayId" : {"RDS" : "regalIGW"}
             }
         },
         "regalSubnet1" : {
